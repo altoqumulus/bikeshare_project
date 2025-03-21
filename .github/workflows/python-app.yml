@@ -68,9 +68,6 @@ jobs:
     name: Build Python Package (.whl)
     runs-on: ubuntu-latest
     needs: model_testing
-    defaults:
-      run:
-        working-directory: bikeshare_project/bikeshare_project
     steps:
       - name: Checkout repository
         uses: actions/checkout@v3
@@ -80,14 +77,15 @@ jobs:
         with:
           python-version: 3.12
 
-      - name: Install build backend (PEP 517)
+      - name: Install build backend
         run: pip install build
 
       - name: Build wheel from pyproject.toml
         run: python -m build --wheel
+        working-directory: bikeshare_project/bikeshare_project
 
       - name: Upload .whl artifact
         uses: actions/upload-artifact@v4
         with:
           name: bikeshare-wheel
-          path: dist/*.whl
+          path: bikeshare_project/bikeshare_project/dist/*.whl
