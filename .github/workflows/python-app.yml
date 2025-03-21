@@ -88,4 +88,4 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: bikeshare-wheel
-          path: bikeshare_project/bikeshare_project/dist/*.whl
+          path: bikeshare_project/dist/*.whl
