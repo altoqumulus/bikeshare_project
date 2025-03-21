@@ -27,6 +27,13 @@ jobs:
       - name: Run training pipeline
         run: python bikeshare_model/train_pipeline.py
 
+      - name: Upload trained model artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: trained-model
+          path: bikeshare_model/trained_models/bikeshare__model_output_v0.0.1.pkl
+
+
   model_testing:
     name: Test Model
     runs-on: ubuntu-latest
@@ -47,6 +54,12 @@ jobs:
         run: |
           pip install -r requirements/requirements.txt
           pip install -r requirements/test_requirements.txt
+
+      - name: Download trained model artifact
+        uses: actions/download-artifact@v4
+        with:
+          name: trained-model
+          path: bikeshare_model/trained_models
 
       - name: Run tests
         run: pytest tests/
