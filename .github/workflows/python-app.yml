@@ -82,7 +82,7 @@ jobs:
 
       - name: Build wheel from pyproject.toml
         run: python -m build --wheel
-        working-directory: bikeshare_project/bikeshare_project
+        working-directory: bikeshare_project
 
       - name: Upload .whl artifact
         uses: actions/upload-artifact@v4
