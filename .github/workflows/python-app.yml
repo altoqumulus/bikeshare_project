@@ -116,9 +116,6 @@ jobs:
           name: bikeshare-wheel
           path: .
 
-      - name: Rename wheel for Docker build
-        run: mv bikeshare_model-*.whl bikeshare_model-0.0.1-py3-none-any.whl
-
       - name: Build Docker image
         run: docker build -t ${{ secrets.DOCKER_USERNAME }}/bikeshare-api:latest .
 
