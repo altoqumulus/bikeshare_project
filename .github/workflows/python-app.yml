@@ -117,7 +117,7 @@ jobs:
           path: .
 
       - name: Build Docker image
-        run: docker build -t ${{ secrets.DOCKER_USERNAME }}/bikeshare-api:latest .
+        run: docker build -t ${{ secrets.DOCKER_USERNAME }}/bikeshare-api:22032025 .
 
       - name: Push Docker image to DockerHub
-        run: docker push ${{ secrets.DOCKER_USERNAME }}/bikeshare-api:latest
+        run: docker push ${{ secrets.DOCKER_USERNAME }}/bikeshare-api:22032025
